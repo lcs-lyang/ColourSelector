@@ -20,11 +20,29 @@ struct ContentView: View {
         return seclectedHue / 360.0
     }
     
+    private var hue2: Double {
+        return seclectedHue / 360.0
+    }
+    
+    private var hue3: Double {
+        return seclectedHue / 360.0
+    }
+    
     //Make the color that SwiftUI will use to ser the background of the colour swatch
-    private var baceColour: Color {
+    private var baseColour: Color {
         return Color(hue: hue,
                      saturation: 0.8,
                      brightness: 0.9)
+    }
+    private var baseColour2: Color {
+        return Color(hue: hue2,
+                     saturation: 0.8,
+                     brightness: 0.7)
+    }
+    private var baseColour3: Color {
+        return Color(hue: hue3,
+                     saturation: 0.8,
+                     brightness: 0.5)
     }
     
     // interface
@@ -34,7 +52,7 @@ struct ContentView: View {
                 
             }
             .frame(width: 200, height: 200)
-            .background(baceColour)
+            .background(baseColour)
             
             
             Text("Hue")
@@ -47,6 +65,36 @@ struct ContentView: View {
                    label: { Text("Hue)") },
                    minimumValueLabel: { Text("0") },
                    maximumValueLabel: { Text ("360") })
+            
+            
+            HStack{
+                Text("Monochromatic")
+                Spacer()
+                    .padding()
+            }
+            
+            HStack (spacing: 0){
+                
+                VStack{
+                    
+                }
+                .frame(width: 75, height: 75)
+                .background(baseColour)
+                
+                VStack{
+                    
+                }
+                .frame(width: 75, height: 75)
+                .background(baseColour2)
+                
+                VStack{
+                    
+                }
+                .frame(width: 75, height: 75)
+                .background(baseColour3)
+                
+                Spacer()
+            }
             
             Spacer()
         }
