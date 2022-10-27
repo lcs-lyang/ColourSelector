@@ -9,12 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     
-    //MARK: stored proprotys
+    //MARK: stored properties
     
     @State private var seclectedHue = 0.0
     
-    //MARK: computed proprotys
+    //MARK: computed properties
     
+    //The selected hue expressed as a value bettween 0 and 1
+    private var hue: Double {
+        return seclectedHue / 360.0
+    }
+    
+    //Make the color that SwiftUI will use to ser the background of the colour swatch
+    private var baceColour: Color {
+        return Color(hue: hue,
+                     saturation: 0.8,
+                     brightness: 0.9)
+    }
     
     // interface
     var body: some View {
@@ -23,13 +34,13 @@ struct ContentView: View {
                 
             }
             .frame(width: 200, height: 200)
-            .background(Color.blue)
+            .background(baceColour)
             
             
             Text("Hue")
                 .bold()
             
-            Text("\(seclectedHue)")
+            Text("\(seclectedHue.formatted(.number.precision(.fractionLength(1))))")
             
             Slider(value: $seclectedHue,
                    in: 0...360,
