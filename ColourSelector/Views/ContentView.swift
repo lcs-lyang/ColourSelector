@@ -13,6 +13,11 @@ struct ContentView: View {
     
     @State private var seclectedHue = 0.0
     
+    
+    //Tracks the list of saved palette
+    @State private var savedPalettes: [SavedPalette] = [] //empty
+    
+    
     //MARK: computed properties
     
     //The selected hue expressed as a value bettween 0 and 1
@@ -95,6 +100,21 @@ struct ContentView: View {
                 
                 Spacer()
             }
+            
+            
+            Button(action: {
+               //Create a new palette instance
+                let newPalette = SavedPalette(hue: hue)
+                
+                //Add it to the list
+                savedPalettes.append(newPalette)
+                
+                print(savedPalettes)
+                
+                
+            }, label: {
+                Text("Save")
+            })
             
             Spacer()
         }
